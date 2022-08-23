@@ -1,0 +1,14 @@
+services:
+    b2c_client_app:
+        container_name: client-app
+        image: httpd:2-alpine
+        ports:
+            - "443:8043"
+            - 80:80
+        volumes:
+            - ../.:/var/www/html/public/
+        build:
+            context: ./apache/
+configs:
+    httpd-config:
+        external: true
