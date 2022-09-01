@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { ReactElement } from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import {StrictMode} from 'react';
 
-const App = (): ReactElement => (
+import { Xyz } from './components/xyz';
+
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+);
+
+root.render(
     <>
-        <h1>Hello world</h1>;
-    </>
+        <StrictMode>
+            <Xyz />
+            <h1>Hello world hahahahahahhaha</h1>;
+        </StrictMode>
+    </>    
 )
-
-const mainDiv = document.querySelector('#main');
-
-render(<App/>, mainDiv);
