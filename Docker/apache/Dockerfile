@@ -21,7 +21,7 @@ RUN sed -i \
     -e 's/^#\(LoadModule .*mod_rewrite.so\)/\1/' \
     conf/httpd.conf
 
-s# SSL configuration
+# SSL configuration
 COPY apache_app.crt conf/server.crt
 COPY apache_app.key conf/server.key
 RUN sed -i \
@@ -31,5 +31,3 @@ RUN sed -i \
     conf/httpd.conf
 
 WORKDIR /var/www/html
-
-RUN yarn install
