@@ -9,10 +9,8 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <>
-        <StrictMode>
-            <Xyz />
-            <h1>Hello world hahahahahahhaha</h1>;
-        </StrictMode>
-    </>    
+    <StrictMode>
+        <Xyz />
+        <h1>Hello world hahahahahahhaha</h1>;
+    </StrictMode>
 )
