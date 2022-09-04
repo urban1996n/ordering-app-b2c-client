@@ -13,7 +13,7 @@
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "webpack": "node_modules/webpack/bin/webpack.js --env dev --watch"
+    "webpack": "../node_modules/webpack/bin/webpack.js --env dev --watch"
   },
   "eslintConfig": {
     "extends": [
