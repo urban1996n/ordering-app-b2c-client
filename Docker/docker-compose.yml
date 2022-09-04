@@ -18,8 +18,8 @@ services:
         build:
             context: "./mongodb"
         volumes:
-            - './data:/data/db'
-            - './data:/data/configdb'
+            - './mongodb/data:/data/db'
+            - './mongodb/data:/data/configdb'
         ports:
             - "27017:27017"
         networks:
