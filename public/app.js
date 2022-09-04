@@ -20,6 +20,16 @@ eval("/**\n * @license React\n * react-dom.development.js\n *\n * Copyright (c) 
 
 /***/ }),
 
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\n\nvar m = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nif (false) {} else {\n  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;\n  exports.createRoot = function(c, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.createRoot(c, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n  exports.hydrateRoot = function(c, h, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.hydrateRoot(c, h, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  };\n}\n\n\n//# sourceURL=webpack://b2c-app/./node_modules/react-dom/client.js?");
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
@@ -70,13 +80,23 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./src/components/xyz.tsx":
+/*!********************************!*\
+  !*** ./src/components/xyz.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Xyz\": () => (/* binding */ Xyz)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Xyz = function () {\n    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"EbeEbe\");\n};\n\n\n//# sourceURL=webpack://b2c-app/./src/components/xyz.tsx?");
+
+/***/ }),
+
 /***/ "./src/index.tsx":
 /*!***********************!*\
   !*** ./src/index.tsx ***!
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n\nvar App = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,\n    react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Hello world\"),\n    \";\")); };\nvar mainDiv = document.querySelector('#main');\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)(react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), mainDiv);\n\n\n//# sourceURL=webpack://b2c-app/./src/index.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var _components_xyz__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/xyz */ \"./src/components/xyz.tsx\");\n\n\n\n\nvar root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));\nvar rootElement = document.getElementById('root');\nif (rootElement) {\n    var root_1 = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(rootElement);\n    root_1.render(\n    // Only for dev purposes\n    react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, null,\n        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_xyz__WEBPACK_IMPORTED_MODULE_2__.Xyz, null),\n        react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Hello world\"),\n        \";\"));\n}\nelse {\n    throw Error(\"Something went wrong...\");\n}\n\n\n//# sourceURL=webpack://b2c-app/./src/index.tsx?");
 
 /***/ })
 

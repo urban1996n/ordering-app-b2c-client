@@ -33,10 +33,4 @@ RUN sed -i \
     -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
     -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
     -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
-<<<<<<< HEAD
-    conf/httpd.conf
-
-WORKDIR /var/www/html
-=======
     /usr/local/apache2/conf/httpd.conf
->>>>>>> f6930a857bfed4e0f1017b51cf1f9f59f69e8190

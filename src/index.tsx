@@ -8,9 +8,18 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-root.render(
-    <StrictMode>
-        <Xyz />
-        <h1>Hello world hahahahahahhaha</h1>;
-    </StrictMode>
-)
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement);
+    
+    root.render(
+        // Only for dev purposes
+        <StrictMode>
+            <Xyz />
+            <h1>Hello world</h1>;
+        </StrictMode>
+    )
+} else {
+    throw Error("Something went wrong...");
+}
