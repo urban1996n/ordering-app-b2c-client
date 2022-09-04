@@ -1,5 +1,6 @@
 services:
     apache:
+        container_name: client-app
         labels:
             version: 2-alpine
         build:
@@ -8,4 +9,34 @@ services:
             - "443:443"
         volumes:
             - ../public:/var/www/html
-        container_name: client-app
+        networks:
+            - frontend
+    mongodb:
+        container_name: mongodb
+        labels:
+            version: ubuntu:focal
+        build:
+            context: "./mongodb"
+        volumes:
+            - './data:/data/db'
+            - './data:/data/configdb'
+        ports:
+            - "27017:27017"
+        networks:
+            - backend
+    php:
+        container_name: php
+        labels:
+            version: 8.0-fpm-alpine
+        build:
+            context: "./php"
+        ports:
+            - "9000:9000"
+        networks:
+            - backend
+            - frontend
+networks:
+    frontend:
+        name: "app_fe"
+    backend:
+        name: "app_be"
