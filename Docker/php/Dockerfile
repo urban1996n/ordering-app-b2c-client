@@ -8,8 +8,8 @@ RUN apk upgrade;
 # "Ref" for docker-php-ext-install: https://hub.docker.com/r/phpdocker/phpdocker/dockerfile
 
 # mongodb.so (extension is only required by comopser.json ext-mongodb)
-RUN apk add --no-cache php7-pear php7-dev gcc musl-dev make
-RUN sudo pecl install -j$(nproc) mongodb
+RUN apk add --no-cache php8-pear php8-dev gcc musl-dev make
+RUN pecl install  mongodb
 
 # MONGODB
 RUN docker-php-ext-enable mongodb

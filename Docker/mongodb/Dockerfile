@@ -108,7 +108,4 @@ RUN set -x \
 # https://github.com/docker-library/mongo/issues/524
 ENV HOME /data/db
 
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
-
 CMD ["mongod"]
