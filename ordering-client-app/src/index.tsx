@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { ReactElement } from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import {StrictMode} from 'react';
+import { App } from './components/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = (): ReactElement => (
-    <>
-        <h1>Hello world</h1>;
-    </>
-)
+const rootElement = document.getElementById('root');
 
-const mainDiv = document.querySelector('#main');
+if (rootElement) {
+    const root = ReactDOM.createRoot(rootElement);
 
-render(<App/>, mainDiv);
+    root.render(
+        // Only for dev purposes
+        <StrictMode>
+            <App />
+        </StrictMode>
+    )
+} else {
+    throw Error("Something went wrong...");
+}
