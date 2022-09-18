@@ -7,6 +7,7 @@ use App\Entity\Common\HasUidInterface;
 use App\Entity\Settings\Menu\MenuItem;
 use App\Repository\Settings\MenuCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MenuCategoryRepository::class)]
@@ -20,14 +21,14 @@ class MenuCategory implements HasUidInterface
     #[ORM\Column()]
     private ?string $slug = null;
 
-    #[ORM\ManyToMany(targetEntity: MenuItem::class, inversedBy: 'categories')]
+    #[ORM\ManyToMany(targetEntity: MenuItem::class, inversedBy: 'menuCategories')]
     /** 
     * @JoinTasssble(name="menu_item_category",
     *   joinColumns={@JoinColumn(name="menu_category", referencedColumnName="uid")},
     *   inverseJoinColumns={@JoinColumn(name="menu_item", referencedColumnName="uid")}
     *)
     */
-    private ArrayCollection $menuItems;
+    private Collection $menuItems;
 
     public function __construct()
     {
@@ -46,12 +47,34 @@ class MenuCategory implements HasUidInterface
         return $this;
     }
 
+    public function addMenuItem(MenuItem $menuItem): MenuCategory
+    {
+        if (!($menuItems = $this->menuItems)->contains($menuItem)) {
+            $menuItems->add($menuItem);
+        }
+
+        $menuItem->addMenuCategory($this);
+
+        return $this;
+    }
+
+    public function removeMenuItem(MenuItem $menuItem): MenuCategory
+    {
+        if(!($menuItems = $this->menuItems)->contains($menuItem)) {
+            $menuItems->remove($menuItem);
+        }
+
+        $menuItem->removeMenuCategory($this);
+
+        return $this;
+    }
+
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    public function setValue(?string $slug): MenuCategory
+    public function setSlug(?string $slug): MenuCategory
     {
         $this->slug = $slug;
 

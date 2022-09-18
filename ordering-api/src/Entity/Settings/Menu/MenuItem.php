@@ -6,6 +6,7 @@ use App\Entity\Common\HasUidInterface;
 use App\Entity\Common\GetUidITrait;
 use App\Repository\Settings\MenuItemRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping\JoinTable;
@@ -27,11 +28,34 @@ class MenuItem implements HasUidInterface
     private ?string $image;
 
     #[ORM\ManyToMany(targetEntity: MenuCategory::class, mappedBy: 'menuItems')]
-    private ?ArrayCollection $categories = null;
+    private ?Collection $menuCategories = null;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->menuCategories = new ArrayCollection();
+    }
+
+    public function addMenuCategory(MenuCategory $menuCategory): MenuItem
+    {
+        if (!($menuCategories = $this->menuCategories)->contains($menuCategory)) {
+            $menuCategories->add($menuCategory);
+        }
+
+        return $this;
+    }
+
+    public function removeMenuCategory(MenuCategory $menuCategory): MenuItem
+    {
+        if(!($menuCategories = $this->categories)->contains($menuCategories)) {
+            $menuCategories->remove($menuCategory);
+        }
+
+        return $this;
+    }
+
+    public function getCategories(): ?ArrayCollection
+    {
+        return $this->categories;
     }
 
     public function getName(): ?string

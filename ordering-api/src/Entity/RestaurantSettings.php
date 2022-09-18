@@ -32,6 +32,13 @@ class RestaurantSettings implements HasUidInterface
         return \call_user_func([$this, self::METHOD_MAP[$settings]]);
     }
 
+    public function setMenuSettings(MenuSettings $menuSettings): RestaurantSettings
+    {
+        $this->menuSettings = $menuSettings;
+
+        return $this;
+    }
+
     private function getMenuSettings(): ?MenuSettings
     {
         return $this->menuSettings;

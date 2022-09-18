@@ -7,7 +7,7 @@ use App\Entity\Settings\Interface\SettingInterface;
 use App\Repository\RestaurantRepositroy;
 use App\Entity\Common\GetUidITrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
+
 
 #[ORM\Entity(repositoryClass: RestaurantRepositroy::class)]
 class Restaurant implements HasUidInterface
@@ -21,7 +21,7 @@ class Restaurant implements HasUidInterface
     #[ORM\Column()]
     private ?string $name = null;
 
-    /** Will be @var File in the future. - for development only*/
+    /** Will be @var Symfony\Component\HttpFoundation\File\File in the future. - for development only*/
     #[ORM\Column()]
     private ?string $picture = null;
 
@@ -37,6 +37,13 @@ class Restaurant implements HasUidInterface
     public function getSettings(): ?RestaurantSettings 
     {
         return $this->RestaurantSettings;
+    }
+
+    public function setSettings(RestaurantSettings $restaurantSettings): Restaurant
+    {
+        $this->settings = $restaurantSettings;
+
+        return $this;
     }
 
     public function getPicture(): ?string
