@@ -22,7 +22,8 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.13",
-        "symfony/proxy-manager-bridge": "5.3.*"
+        "symfony/proxy-manager-bridge": "5.3.*",
+        "symfony/uid": "5.3.*"
     },
     "autoload": {
         "psr-4": {
