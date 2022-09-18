@@ -9,11 +9,11 @@ RUN apk upgrade;
 
 # MySQL database (mysqli is only required by comopser.json ext-mysqli; remove it once Composer gets updated)
 RUN docker-php-ext-install -j$(nproc) \
-	sqlite3 \
+	mysqli \
 	pdo pdo_mysql 
 
 # SQLITE3 
-RUN docker-php-ext-enable sqlite3
+RUN docker-php-ext-enable mysqli
 
 # CTYPE
 RUN docker-php-ext-install -j$(nproc) ctype \
