@@ -24,6 +24,25 @@ services:
         networks:
             - backend
             - frontend
+    mysql:
+        image: mysql:8.0
+        restart: always
+        ports:
+        - "3306:3306"
+        volumes:
+        - data:/var/lib/mysql
+        networks:
+        - backend
+        environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: order_app
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+        MYSQL_INITDB_SKIP_TZINFO: 'true'
+        TZ: Europe/London
+        container_name: mysql
+        # Disable the MySQL's strict mode (required for legacy projects)
+        command: mysqld --sql_mode="" --skip-name-
 networks:
     frontend:
         name: "app_fe"
