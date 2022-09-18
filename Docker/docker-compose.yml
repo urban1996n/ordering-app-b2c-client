@@ -11,19 +11,6 @@ services:
             - ../ordering-client-app/public:/var/www/html
         networks:
             - frontend
-    mongodb:
-        container_name: mongodb
-        labels:
-            version: ubuntu:focal
-        build:
-            context: "./mongodb"
-        volumes:
-            - './mongodb/data:/data/db'
-            - './mongodb/data:/data/configdb'
-        ports:
-            - "27017:27017"
-        networks:
-            - backend
     php:
         container_name: php_api
         labels:
