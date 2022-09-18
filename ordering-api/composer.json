@@ -7,7 +7,7 @@
       "ext-ctype": "*",
       "ext-iconv": "*",
       "ext-json": "*",
-      "ext-mongodb": "*",
+      "ext-sqlite3": "*",
       "friendsofsymfony/rest-bundle": "3.0.*",
       "guzzlehttp/guzzle": "^7.0",
       "jms/serializer-bundle": "^3.5",
