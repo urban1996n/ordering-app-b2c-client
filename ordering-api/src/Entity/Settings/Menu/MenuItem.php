@@ -46,16 +46,16 @@ class MenuItem implements HasUidInterface
 
     public function removeMenuCategory(MenuCategory $menuCategory): MenuItem
     {
-        if(!($menuCategories = $this->categories)->contains($menuCategories)) {
+        if(!($menuCategories = $this->menuCategories)->contains($menuCategories)) {
             $menuCategories->remove($menuCategory);
         }
 
         return $this;
     }
 
-    public function getCategories(): ?ArrayCollection
+    public function getCategories(): ?Collection
     {
-        return $this->categories;
+        return $this->menuCategories;
     }
 
     public function getName(): ?string

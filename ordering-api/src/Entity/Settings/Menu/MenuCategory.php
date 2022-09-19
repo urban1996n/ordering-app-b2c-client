@@ -69,6 +69,11 @@ class MenuCategory implements HasUidInterface
         return $this;
     }
 
+    public function getMenuItems(): Collection
+    {
+        return $this->menuItems;
+    }
+
     public function getSlug(): ?string
     {
         return $this->slug;

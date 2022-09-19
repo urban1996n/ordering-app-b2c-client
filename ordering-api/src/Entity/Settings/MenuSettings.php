@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Settings;
 
 use App\Entity\Common\GetUidITrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -32,7 +32,7 @@ class MenuSettings implements HasUidInterface, SettingInterface
         $this->menuItems = new ArrayCollection();
     }
 
-    public function getMenuCategories(): ArrayCollection
+    public function getMenuCategories(): Collection
     {
         return $this->menuCategories;
     }
@@ -47,7 +47,7 @@ class MenuSettings implements HasUidInterface, SettingInterface
         return $this;
     }
 
-    public function getMenuItems(): ArrayCollection
+    public function getMenuItems(): Collection
     {
         return $this->menuItems;
     }

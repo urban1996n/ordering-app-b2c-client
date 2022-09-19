@@ -8,6 +8,7 @@ use Symfony\Component\Uid\Uuid;
 use App\Repository\RestaurantSettingsRepository;
 use App\Entity\Common\HasUidInterface;
 use App\Entity\Settings\Interface\SettingInterface;
+use App\Entity\Settings\MenuSettings;
 
 #[ORM\Entity(repositoryClass: RestaurantSettingsRepository::class)]
 class RestaurantSettings implements HasUidInterface
