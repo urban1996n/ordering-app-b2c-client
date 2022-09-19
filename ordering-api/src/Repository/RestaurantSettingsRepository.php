@@ -10,7 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method RestaurantSettings|null find($id, $lockMode = null, $lockVersion = null)
  * @method RestaurantSettings|null findOneBy(array $criteria, array $orderBy = null)
  * @method RestaurantSettings[]    findAll()
- * @method RestaurantRestaurantSettings[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RestaurantSettings[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class RestaurantSettingsRepository extends ServiceEntityRepository
 {

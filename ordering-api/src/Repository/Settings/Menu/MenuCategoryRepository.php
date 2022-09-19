@@ -2,7 +2,7 @@
 
 namespace App\Repository\Settings;
 
-use App\Entity\MenuCategory;
+use App\Entity\Settings\Menu\MenuCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
