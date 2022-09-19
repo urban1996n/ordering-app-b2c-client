@@ -1,6 +1,6 @@
 services:
-    apache:
-        container_name: client-app
+    aoache:
+        container_name: order_app
         labels:
             version: 2-alpine
         build:
@@ -11,13 +11,14 @@ services:
             - ../ordering-client-app/public:/var/www/html
         networks:
             - frontend
-    mysql:
+    mysqk:
         image: mysql:5.6
+        container_name: order_db
         restart: always
         ports:
-        - "3306:3306"
+            - "3306:3306"
         networks:
-        - backend
+            - backend
         environment:
             MYSQL_ROOT_PASSWORD: "mainpassword"
             MYSQL_DATABASE: "order_app"
@@ -25,9 +26,8 @@ services:
             MYSQL_PASSWORD: "odb"
             MYSQL_INITDB_SKIP_TZINFO: 'true'
             TZ: Europe/London
-        container_name: mysql
     php:
-        container_name: php_api
+        container_name: order_api
         labels:
             version: 8.0-fpm-alpine
         build:
