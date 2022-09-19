@@ -11,7 +11,7 @@ services:
             - ../ordering-client-app/public:/var/www/html
         networks:
             - frontend
-    mysqk:
+    mysql:
         image: mysql:5.6
         container_name: order_db
         restart: always
