@@ -20,7 +20,7 @@ class RestaurantApiFormatter
             return [
                 'name'  => $restaurant->getName(),
                 'image' => $restaurant->getPicture(),
-                'menu'  => $this->getFormattedMenu($menu)
+                'menu'  => $this->getFormattedMenu($menu),
             ];
         };
 
@@ -43,10 +43,10 @@ class RestaurantApiFormatter
     {
         $formatMenuCategory = function (MenuCategory $menuCategory) {
             return [
-                $menuCategory->getSlug() => [
-                    'name'       => $menuCategory->getName(),
-                    'menu_items' => $this->getFormattedMenuItems($menuCategory->getMenuItems()->toArray()),
-                ],
+                'slug'       => $menuCategory->getSlug(),
+                'name'       => $menuCategory->getName(),
+                'menu_items' => $this->getFormattedMenuItems($menuCategory->getMenuItems()->toArray()),
+
             ];
         };
 
