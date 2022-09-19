@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Entity\Common\GetUidITrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Uid\Uuid;
 use App\Repository\RestaurantSettingsRepository;
 use App\Entity\Common\HasUidInterface;
 use App\Entity\Settings\Interface\SettingInterface;

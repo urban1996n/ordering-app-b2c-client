@@ -36,7 +36,7 @@ class Restaurant implements HasUidInterface
 
     public function getSettings(): ?RestaurantSettings 
     {
-        return $this->RestaurantSettings;
+        return $this->settings;
     }
 
     public function setSettings(RestaurantSettings $restaurantSettings): Restaurant
