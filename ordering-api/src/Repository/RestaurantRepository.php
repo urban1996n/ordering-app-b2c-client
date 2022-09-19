@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Restaurant[]    findAll()
  * @method Restaurant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RestaurantRepositroy extends ServiceEntityRepository
+class RestaurantRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\MenuSettings;
+use App\Entity\Settings\MenuSettings;
 use App\Entity\Restaurant;
 use App\Entity\RestaurantSettings;
 use App\Entity\Settings\Menu\MenuCategory;
