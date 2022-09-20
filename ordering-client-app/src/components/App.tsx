@@ -1,8 +1,7 @@
 import React from 'react';
 import { Main } from './Main';
-import { SubMenu } from './SubMenu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { DUMMY_MENU_TYPES } from './SidebarSwitchMenu';
+import { DUMMY_MENU_TYPES } from './Menu/ScrollMenuNav';
 
 export const App = () => {
     return <>
@@ -13,7 +12,7 @@ export const App = () => {
                         <Route 
                             key={index} 
                             path={type.to} 
-                            element={<SubMenu />}
+                            element={<></>}
                         />
                     ))}
                 </Route>
