@@ -6,11 +6,12 @@ use App\Api\Response\Formatter\RestaurantApiFormatter;
 use App\Form\Type\RestaurantType;
 use App\Repository\RestaurantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Restaurant;
+use App\Entity\Settings\RestaurantSettings;
 
 #[Route(path: '/api/restaurant')]
 class RestaurantApiEndpoint extends AbstractController
@@ -26,8 +27,7 @@ class RestaurantApiEndpoint extends AbstractController
     #[Route(path: '/create', methods: ['POST'], name: 'create_restaurant')]
     public function createRestaurant(Request $request): JsonResponse
     {
-        $form = $this->createForm(RestaurantType::class);
-        $form->add('submit', SubmitType::class);
+        $form = $this->createForm(RestaurantType::class, new Restaurant());
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             return $this->json(['result' => 'ok', Response::HTTP_CREATED]);
