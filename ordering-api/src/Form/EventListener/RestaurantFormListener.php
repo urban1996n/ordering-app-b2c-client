@@ -23,7 +23,7 @@ class RestaurantFormListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            FormEvents::SUBMIT   => 'onSubmit'
+            FormEvents::SUBMIT => 'onSubmit'
         ];
     }
 
