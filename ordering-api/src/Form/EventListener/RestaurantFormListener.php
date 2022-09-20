@@ -6,10 +6,11 @@ use App\Entity\Settings\MenuSettings;
 use App\Entity\Settings\RestaurantSettings;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\FormEvent;
+use Symfony\Comp\Form\FormEvent;
 use Symfony\Component\Form\Event\SubmitEvent;
+use Symfony\Component\Form\FormEvents;
 
-class MenuFormListener implements EventSubscriberInterface
+class RestaurantFormListener implements EventSubscriberInterface
 {
     private ManagerRegistry $registry;
 
@@ -22,7 +23,7 @@ class MenuFormListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            SubmitEvent::class => 'onSubmit'
+            FormEvents::SUBMIT   => 'onSubmit'
         ];
     }
 
@@ -38,6 +39,8 @@ class MenuFormListener implements EventSubscriberInterface
             $om->persist($menuSettings);
             $om->persist($restaurantSettings);
             $om->persist($restaurant);
+
+            $om->flush();
         }
     }
 }
