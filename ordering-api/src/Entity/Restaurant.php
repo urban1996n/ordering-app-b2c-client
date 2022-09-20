@@ -7,7 +7,7 @@ use App\Entity\Settings\Interface\SettingInterface;
 use App\Repository\RestaurantRepository;
 use App\Entity\Common\GetUidITrait;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Entity\Settings\RestaurantSettings;
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
 class Restaurant implements HasUidInterface

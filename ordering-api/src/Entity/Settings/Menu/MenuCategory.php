@@ -23,7 +23,7 @@ class MenuCategory implements HasUidInterface
 
     #[ORM\ManyToMany(targetEntity: MenuItem::class, inversedBy: 'menuCategories')]
     /** 
-    * @JoinTasssble(name="menu_item_category",
+    * @JoinTable(name="menu_item_category",
     *   joinColumns={@JoinColumn(name="menu_category", referencedColumnName="uid")},
     *   inverseJoinColumns={@JoinColumn(name="menu_item", referencedColumnName="uid")}
     *)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Settings;
 
 use App\Entity\Common\GetUidITrait;
 use Doctrine\ORM\Mapping as ORM;

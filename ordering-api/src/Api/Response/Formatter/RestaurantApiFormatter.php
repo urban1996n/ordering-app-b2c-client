@@ -4,7 +4,7 @@ namespace App\Api\Response\Formatter;
 
 use App\Entity\Settings\MenuSettings;
 use App\Entity\Restaurant;
-use App\Entity\RestaurantSettings;
+use App\Entity\Settings\RestaurantSettings;
 use App\Entity\Settings\Menu\MenuCategory;
 use App\Entity\Settings\Menu\MenuItem;
 
@@ -34,7 +34,7 @@ class RestaurantApiFormatter
         }
 
         return [
-            'menu_categories' => $this->getFormattedMenuCategories($menu->getMenuCategories()->toArray()),
+            $this->getFormattedMenuCategories($menu->getMenuCategories()->toArray()),
         ];
     }
 

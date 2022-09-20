@@ -4,10 +4,11 @@ namespace App\DataFixtures;
 
 use App\Entity\Settings\MenuSettings;
 use App\Entity\Restaurant;
-use App\Entity\RestaurantSettings;
+use App\Entity\Settings\RestaurantSettings;
 use App\Entity\Settings\Menu\MenuCategory;
 use App\Entity\Settings\Menu\MenuItem;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
@@ -46,51 +47,37 @@ class AppFixtures extends Fixture
 
     private function createMenu(): MenuSettings
     {
-        $menu       = new MenuSettings();
-        $categories = [];
-        $items      = [];
+        $menu           = new MenuSettings();
+        $menuCategories = [
+            0 => [
+                'name' => 'Main Dishes',
+                'items' => ['Fish', 'Pork chop', 'Hamburger']
+            ],
+            1=> [
+                'name' => 'Soups',
+                'items' => ['Chicken soup', 'Brocolli creme', 'Fish soup'],
+            ],
+            2 => [
+                'name' => 'Apetizers',
+                'items' => ['Fries', 'Onion rings'],
 
-        foreach (['Main Dishes', 'Soups', 'Apetizers', 'Drinks'] as $categoryName) {
-            $categories[] = $this->createMenuCategory($categoryName);
-        }
+            ],
+            3 => [
+                'name' => 'Drinks',
+                'items' => ['Beer', 'Tea', 'Cola', 'Pepsi', 'Vodka']
+            ]
+        ];
+        
+        foreach ($menuCategories as $index => [$categoryName, $menuItems]) {
+            $menuCategory = $this->createMenuCategory($categoryName);
 
-        foreach (['Fish', 'Pork chop', 'Hamburger'] as $mainDish) {
-            $item    = $this->createMenuItem($mainDish);
-            $items[] = $item; 
+            foreach ($menuItems as $menuItemName) {
+                $menuCategory->addMenuItem($menuItem = $this->createMenuItem($menuItemName));
+                $this->manager->persist($menuItem);
+            }
 
-            $categories[0]->addMenuItem($item);
-        }
-
-        foreach (['Chicken soup', 'Brocolli creme', 'Fish soup'] as $soup) {
-            $item = $this->createMenuItem($soup);
-            $items[] = $item;
-            
-            $categories[1]->addMenuItem($item);
-        }
-
-        foreach (['Fries', 'Onion rings'] as $apetizer) {
-            $item = $this->createMenuItem($apetizer);
-            $items[] = $item;
-
-            $categories[2]->addMenuItem($item);
-        }
-
-        foreach (['Beer', 'Tea', 'Cola', 'Pepsi', 'Vodka'] as $drink) {
-            $item = $this->createMenuItem($drink);
-            $items[] = $item;
-            $categories[3]->addMenuItem($item);
-        }
-
-        foreach ($categories as $category) {
-            $menu->addMenuCategory($category);
-
-            $this->manager->persist($category);
-        }
-
-        foreach ($items as $menuItem) { 
-            $menu->addMenuItem($menuItem);
-
-            $this->manager->persist($menuItem);
+            $menu->addMenuCategory($menuCategory);
+            $this->manager->persist($menuCategory);
         }
 
         $this->manager->persist($menu);
@@ -114,7 +101,7 @@ class AppFixtures extends Fixture
         $menuItem = new MenuItem();
         $menuItem
             ->setName($name)
-            ->setValue(\rand(0, 120))
+            ->setValue(\rand(1, 120))
             ->setImage('no-image');
         
         return $menuItem;
