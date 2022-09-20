@@ -22,14 +22,9 @@ class MenuSettings implements HasUidInterface, SettingInterface
     #[ORM\JoinTable(name: 'menu_settings_categories')]
     private ?Collection $menuCategories = null;
 
-    #[ORM\ManyToMany(targetEntity: MenuItem::class)]
-    #[ORM\JoinTable(name: 'menu_settings_items')]
-    private ?Collection $menuItems = null;
-
     public function __construct()
     {
         $this->menuCategories = new ArrayCollection();
-        $this->menuItems = new ArrayCollection();
     }
 
     public function getMenuCategories(): Collection
@@ -41,21 +36,6 @@ class MenuSettings implements HasUidInterface, SettingInterface
     {
         if (!($menuCategories = $this->menuCategories)->contains($menuCategories)) {
             $menuCategories->add($menuCategory);
-        }
-        
-
-        return $this;
-    }
-
-    public function getMenuItems(): Collection
-    {
-        return $this->menuItems;
-    }
-
-    public function addMenuItem(MenuItem $menuItem): MenuSettings
-    {
-        if (!($menuItems = $this->menuItems)->contains($menuItem)) {
-            $menuItems->add($menuItem);
         }
         
 

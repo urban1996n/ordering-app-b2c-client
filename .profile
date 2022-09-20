@@ -1,7 +1,15 @@
-dconsole() {
-   docker exec -it php_api php bin/console $@
+dcomposer() {
+   docker exec -it order_api php composer.phar $@
 }
 
-dcomposer() {
-   docker exec -it php_api php composer.phar $@
+dconsole() {
+   docker exec -it order_api php bin/console $@
 }
+
+newdb() {
+   docker exec -it order_api php bin/console d:s:c 
+}
+
+fixturesload() {
+    docker exec -it order_api php bin/console doctrine:fixtures:load
+}  
