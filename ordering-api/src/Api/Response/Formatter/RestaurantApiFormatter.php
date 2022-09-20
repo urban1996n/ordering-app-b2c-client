@@ -34,7 +34,7 @@ class RestaurantApiFormatter
         }
 
         return [
-            'menu_categories' => $this->getFormattedMenuCategories($menu->getMenuCategories()->toArray()),
+            $this->getFormattedMenuCategories($menu->getMenuCategories()->toArray()),
         ];
     }
 
