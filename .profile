@@ -5,11 +5,11 @@ dcomposer() {
 dconsole() {
    docker exec -it order_api php bin/console $@
 }
+
 newdb() {
    docker exec -it order_api php bin/console d:s:c 
 }
 
-
-fixturesload(){
+fixturesload() {
     docker exec -it order_api php bin/console doctrine:fixtures:load
 }  
