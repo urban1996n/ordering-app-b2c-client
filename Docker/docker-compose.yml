@@ -1,6 +1,6 @@
 services:
-    apache:
-        container_name: client-app
+    aoache:
+        container_name: order_app
         labels:
             version: 2-alpine
         build:
@@ -11,21 +11,23 @@ services:
             - ../ordering-client-app/public:/var/www/html
         networks:
             - frontend
-    mongodb:
-        container_name: mongodb
-        labels:
-            version: ubuntu:focal
-        build:
-            context: "./mongodb"
-        volumes:
-            - './mongodb/data:/data/db'
-            - './mongodb/data:/data/configdb'
+    mysql:
+        image: mysql:5.6
+        container_name: order_db
+        restart: always
         ports:
-            - "27017:27017"
+            - "3306:3306"
         networks:
             - backend
+        environment:
+            MYSQL_ROOT_PASSWORD: "mainpassword"
+            MYSQL_DATABASE: "order_app"
+            MYSQL_USER: "odb"
+            MYSQL_PASSWORD: "odb"
+            MYSQL_INITDB_SKIP_TZINFO: 'true'
+            TZ: Europe/London
     php:
-        container_name: php_api
+        container_name: order_api
         labels:
             version: 8.0-fpm-alpine
         build:
