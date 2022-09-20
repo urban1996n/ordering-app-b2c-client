@@ -2,8 +2,7 @@
 
 namespace App\Form\Type;
 
-use App\Entity\Settings\RestaurantSettings;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Restaurant;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,10 +15,7 @@ class RestaurantType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('picture', DateType::class)
-            ->add('restaurantSettings', EntityType::class,[
-                'class' => RestaurantSettings::class,
-            ]);
+            ->add('picture', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -2,8 +2,8 @@
 
 namespace App\Form\Type;
 
+use App\Entity\Settings\Menu\MenuItem;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,6 +21,6 @@ class MenuItemType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('data_class', Restaurant::class);
+        $resolver->setDefault('data_class', MenuItem::class);
     }
 }
